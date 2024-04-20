@@ -13,3 +13,5 @@
 #Kodun son kısmında, `main()` fonksiyonu, sunucunun IP adresi ve bağlanmak istediği port numarasını kullanıcıdan alır. Ardından, bir döngü içinde bağlantıyı kabul eder ve gelen komutları işler.
 
 #Bu uygulama, temel bir arka kapı işlevselliği sağlar ve istemci ile sunucu arasında etkileşimli bir komut kabul eden basit bir iletişim protokolü kullanır.
+
+
