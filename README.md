@@ -1,3 +1,7 @@
+
+[![Instagram](https://img.shields.io/badge/-Instagram-ff69b4?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/rootramo?igsh=c2ptcHhjZGRnMGV2)
+
+
 #Bu kod, bir arka kapı ("backdoor") uygulaması oluşturur. Bu uygulama, belirli bir IP adresi ve port numarası üzerinden bağlantı dinler ve gelen komutları işler. İstemci tarafından gönderilen komutları alır ve uygun işlemleri gerçekleştirir.
 
 #İşlevsellik açısından, bu uygulama aşağıdaki özelliklere sahiptir:
