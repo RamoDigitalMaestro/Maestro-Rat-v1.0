@@ -1,21 +1,20 @@
 
 [![Instagram](https://img.shields.io/badge/-Instagram-ff69b4?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/rootramo?igsh=c2ptcHhjZGRnMGV2)
 
+#🇹🇷
 
-#Bu kod, bir arka kapı ("backdoor") uygulaması oluşturur. Bu uygulama, belirli bir IP adresi ve port numarası üzerinden bağlantı dinler ve gelen komutları işler. İstemci tarafından gönderilen komutları alır ve uygun işlemleri gerçekleştirir.
+Bu Python betiği, bir arka kapı saldırısı simülasyonu için tasarlanmıştır. Attacker.py adlı betik, bir saldırganın belirli komutları hedef makineye göndermesini sağlar. Target.py adlı betik ise, bu komutları alır ve hedef makinede ilgili işlemleri gerçekleştirir.
 
-#İşlevsellik açısından, bu uygulama aşağıdaki özelliklere sahiptir:
+Attacker.py, hedef IP adresi ve port numarasını argüman olarak alır ve ardından hedefe bağlanır. Ardından, saldırganın komutları girmesini sağlar. Kullanıcı, çeşitli komutlar aracılığıyla hedefe komut gönderebilir ve hedef makinedeki işlemleri gerçekleştirebilir.
 
-#1. **Sistem Bilgileri Alımı**: İstemci, sistem hakkında bilgi almak için `osinfo`, `cpu`, `memory` ve `ifconfig` gibi komutlar gönderebilir. Bu komutlar, platform bilgileri, CPU kullanımı, bellek kullanımı ve ağ arayüzü bilgilerini almak için kullanılır.
+Target.py, sunucunun IP adresini ve dinlemek istediği port numarasını kullanıcıdan alır. Ardından, belirli komutları alır ve bu komutlara göre işlem yapar. Örneğin, 'ls' komutuyla dizin içeriğini listeler veya 'execute' komutuyla belirli bir terminal komutunu çalıştırır.
 
-#2. **Komut Yürütme**: İstemci, sunucuda belirli bir terminal komutunu çalıştırmak için `execute` komutunu kullanabilir. Bu komut, `subprocess.run()` kullanılarak gerçekleştirilir.
+Bu iki betik, kötü amaçlı yazılım analizi veya siber güvenlik eğitimi gibi senaryolar için kullanılabilir. Ancak, bu tür aktiviteleri gerçek sistemlerde gerçekleştirmek yasa dışı olabilir ve izinsiz erişim gerektirebilir.
 
-#3. **Dosya İşlemleri**: İstemci, sunucuda dosya işlemleri yapmak için komutlar gönderebilir. Dosya okuma (`cat`), dosya silme (`rm`), dizin listeleme (`ls`), dizin değiştirme (`cd`), dizin oluşturma (`mkdir`), dosya oluşturma (`touch`) ve dosyaya metin ekleme (`echo`) gibi işlemler desteklenir.
+#Nasıl Kullanılır?
 
-#4. **Ekran Görüntüsü Alma**: `screenshot` komutunu kullanarak sunucuda bir ekran görüntüsü alınır ve istemciye gönderilir.
+attacker.py -lport (aktif portunuzu giriceksiniz) -lhost(kendi ip adresini giriceksiniz)
 
-#Kodun son kısmında, `main()` fonksiyonu, sunucunun IP adresi ve bağlanmak istediği port numarasını kullanıcıdan alır. Ardından, bir döngü içinde bağlantıyı kabul eder ve gelen komutları işler.
+examples;
 
-#Bu uygulama, temel bir arka kapı işlevselliği sağlar ve istemci ile sunucu arasında etkileşimli bir komut kabul eden basit bir iletişim protokolü kullanır.
-
-
+attacker.py -lhost 192.168.1.33 -lport 8080
