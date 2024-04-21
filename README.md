@@ -18,3 +18,7 @@ attacker.py -lport (aktif portunuzu giriceksiniz) -lhost(kendi ip adresini giric
 examples;
 
 attacker.py -lhost 192.168.1.33 -lport 8080
+
+Kurban target.py başlattığı zaman bağlantı size gelicektir.
+not: target.py deki ip ve portu kendinize gore ayarlayın.
+Kötü kullanımdan ben sorumlu değilim.
