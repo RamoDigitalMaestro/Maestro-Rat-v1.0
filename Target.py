@@ -4,7 +4,6 @@ import os
 import psutil
 from psutil._common import bytes2human
 import platform
-import pyautogui
 
 def get_os_info():
     os_info = """
